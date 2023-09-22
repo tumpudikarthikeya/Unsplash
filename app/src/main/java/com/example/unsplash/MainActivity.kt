@@ -14,7 +14,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.unsplash.ui.screens.home.unSplash
 import com.example.unsplash.ui.screens.home.unSplashViewModel
 import com.example.unsplash.ui.theme.UnsplashTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private val viewModel : unSplashViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {

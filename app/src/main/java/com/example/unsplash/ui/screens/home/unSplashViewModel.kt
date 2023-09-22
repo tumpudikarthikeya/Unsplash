@@ -6,21 +6,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.unsplash.ui.data.repository.Repository
 import com.example.unsplash.ui.model.UnSplashImage
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class unSplashViewModel : ViewModel() {
+@HiltViewModel
+class unSplashViewModel @Inject constructor(
+    repository: Repository
+) :ViewModel()
+     {
 
-    private val repository = Repository()
-    private val _UnSplashImages = MutableLiveData<List<UnSplashImage>>()
-    val UnSplashImages : LiveData<List<UnSplashImage>> = _UnSplashImages
-    fun fetchImages() {
-        viewModelScope.launch {
-            try {
-                val images = repository.getAllImages()
-                _UnSplashImages.value = images
-            }catch (e :Exception) {
-                println(e)
-            }
-        }
-    }
+     val getAllImages = repository.getAllImages()
+
 }

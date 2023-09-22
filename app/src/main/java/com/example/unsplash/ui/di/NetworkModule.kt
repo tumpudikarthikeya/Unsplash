@@ -9,6 +9,7 @@ import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.scalars.ScalarsConverterFactory
+import retrofit2.create
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
@@ -37,7 +38,7 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideUnSplashAPI(retrofit: Retrofit = provideRetrofit(provideHTTPClient())): UnSplashAPI {
+    fun provideUnSplashAPI(retrofit: Retrofit ): UnSplashAPI {
         return retrofit.create(UnSplashAPI::class.java)
     }
 }
